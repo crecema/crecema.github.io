@@ -341,3 +341,83 @@ Entry对Key的引用是弱引用；Entry对Value的引用是强引用。
 * 虚拟机自带的如类加载器
 * 老年区的一部分存在跨代引用的对象
 
+### （43）redis命令
+* string：
+  * set key value
+  * set key value ex 100 （100秒过期）
+  * set key value nx （不存在时成功）
+  * set key value xx （存在时成功）
+  * get key
+  * getrange 0 -1
+  * getset key newValue （设置新值，返回旧值）
+  * strlen key （字符串长度）
+  * append key _value （追加字符串）
+  * setrange key offset _value （从offset后的字符被替换为_value）
+  * incr age （自增一个数字值）
+  * incrby age 5 （数字增加一个值）
+  * incrbyfloat age 2.3333 （增加一个浮点数）
+  * decr age
+  * decrby age 5
+  * mset key1 value1 key2 value2
+  * mget key1 key2
+* list:
+  * lpush list 1
+  * lpush list 2 3 4
+  * lpushx list 1 （存在时成功）
+  * lpop list
+  * rpoplpush source target
+  * lindex list 0
+  * linsert list 0 value
+  * lset list 0 value
+  * lrange list 0 -1
+  * ltrim list 2 4
+  * blpop list
+  * brpop list
+  * brpoplpush source target
+* hash:
+  * hset key field value
+  * hsetnx key field value
+  * hget key field
+  * hexists key field
+  * hdel key field
+  * hlen key
+  * hstrlen key field
+  * hincrby key field 5
+  * hincrbyfloat key field 2.333
+  * hmset key field1 value1 field2 value2
+  * hmget key field1 field2
+  * hkeys key
+  * hvals key
+  * hgetall key
+* set:
+  * sadd key 1
+  * sismember key member
+  * spop key （随机移除集合中的一个成员）
+  * srandmember key （随机选择一个成员）
+  * srem key member
+  * smove source target member
+  * scard key
+  * smembers key
+  * sinter key1 key2 key3 （返回交集）
+  * sinterstore key1 key2 key3 target（返回交集，输入到target）
+  * sunion key1 key2 key3 （返回并集）
+  * sunionstore key1 key2 key3 target
+  * sdiff key1 key2 （返回差集）
+  * sdiffstore key1 key2
+* zset:
+  * zadd key score member
+  * zscore key member
+  * zincrby key 5 member
+  * zcard key
+  * zcount key min max
+  * zrange key 0 -1
+  * zrevrange key 0 -1
+  * zrangebyscore key min max
+  * zrevrangebyscore key min max
+  * zrank key member
+  * zrevrank key member
+  * zrem key member
+  * zremrangebyrank key start end
+  * zremrangebyscore key min max
+  * zunionstore target numkeys key1 key2 key3
+  * 
